@@ -6,6 +6,8 @@ var bodyParser = require( 'body-parser' );
 var urlEncodedParser = bodyParser.urlencoded( { extended: true } );
 // use bodyParser.urlencoded throughout the app with this:
 app.use( bodyParser.urlencoded( { extended: false } ) );
+app.use( express.static( 'public' ) );
+
 // initial jokes provided by the client
 jokes = [
   {
@@ -41,5 +43,31 @@ app.get( '/', function( req, res ){
   res.sendFile( path.resolve( 'views/index.html' ) );
 }); // end base url
 
+// testPost
+app.post( '/postJoke', urlEncodedParser, function( req, res ){
+  console.log( 'postJoke url hit req.body:', req.body );
+jokes.push(req.body);
+console.log("This is in jokes:", jokes);
+  // do work here
+  // assemble object to return
+  var objectToReturn =
+  {
+    field0: 'I came from postJoke on server'
+  }; // end object to return
+  // return objectToReturn
+  res.send( objectToReturn );
+}); // end testPost
 
-app.use( express.static( 'public' ) );
+
+// testGet
+app.get( '/getJoke', function( req, res ){
+  console.log( 'getJoke url hit' );
+  // do work here
+  // assemble object to return
+  var objectToReturn =
+  {
+    field0: 'I came from getJoke on server'
+  }; // end object to return
+  // return objectToReturn
+  res.send( jokes );
+}); // end testGet
