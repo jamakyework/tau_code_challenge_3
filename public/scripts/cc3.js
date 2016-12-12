@@ -6,7 +6,7 @@ $( document ).ready( function(){
   $( '#addJokeButton' ).on( 'click', function(){
     console.log( 'addJokeButton on click');
     postJoke();
-    // getJoke();
+    getJoke();
   }); // end addJokeButton on click
 
   // start postData
@@ -32,10 +32,6 @@ $( document ).ready( function(){
         console.log( 'back from post call1:', response );
         console.log( 'back from post call2:', response[0]);
         console.log( 'back from post call3:', response[0].whoseJoke, response[0].jokeQuestion, response[0].punchLine);
-        for( var i = 0 ; i < response.length; i++ ){
-          $("#outputDiv").empty();
-          $("#outputDiv").html(response[i].whoseJoke + " " + response[i].jokeQuestion + " "+ response[i].punchLine );
-      }
       },// end success
       error: function(){
         console.log( 'error with ajax call...');
@@ -52,6 +48,11 @@ $( document ).ready( function(){
       success: function( response ){
         console.log( 'back from get call:', response);
 // need object from server side
+for( var i = 0 ; i < response.length; i++ ){
+  $("#outputDiv").append("<br> Name: " + response[i].whoseJoke + "<br>");
+  $("#outputDiv").append("Question: " + response[i].jokeQuestion + "<br>");
+  $("#outputDiv").append("Punch Line: " + response[i].punchLine);
+}
     },
       error: function(){
         console.log( 'error with ajax call...');
@@ -60,20 +61,3 @@ $( document ).ready( function(){
   }; // end getJoke
 
 }); // end doc ready
-
-
-
-// //start display
-// var displayOnDOM = function(response){
-//   $("#outputDiv").empty();
-//   for( var i = 0 ; i < response.length; i++ ){
-//     $( "#outputDiv").html( "<p><b>" + response[ i ].whoseJoke + "</b> (" + response[ i ].jokeQuestion + ") </b> (" + response[ i ].jokeQuestion + ")</p>");
-// }
-// };
-// //end display
-
-// var displayOnDom = function(potato){
-//   $("#outputDiv").empty();
-//     console.log("In displayOnDom:", potato);
-//     $( "#outputDiv").html("<p>" + potato + "</p>");
-// };
