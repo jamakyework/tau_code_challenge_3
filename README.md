@@ -37,6 +37,6 @@ Remember to work in small increments and test often. If you want to take things 
 Tasks
 =====
 
-[] Send requests to the server from both the browser and using ajax in the client side script.
+[x] Send requests to the server from both the browser and using ajax in the client side script.
 [] Display response on the DOM.
 [] Demonstrate the separation of logic between the client and the server.

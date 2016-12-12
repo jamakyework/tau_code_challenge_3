@@ -50,24 +50,19 @@ jokes.push(req.body);
 console.log("This is in jokes:", jokes);
   // do work here
   // assemble object to return
-  var objectToReturn =
-  {
-    field0: 'I came from postJoke on server'
-  }; // end object to return
+  var objectToReturn = jokes;
+ // end object to return
   // return objectToReturn
   res.send( objectToReturn );
 }); // end testPost
 
-
-// testGet
+// getJoke
 app.get( '/getJoke', function( req, res ){
   console.log( 'getJoke url hit' );
   // do work here
   // assemble object to return
-  var objectToReturn =
-  {
-    field0: 'I came from getJoke on server'
-  }; // end object to return
+  var objectToReturn = jokes;
+  // end object to return
   // return objectToReturn
   res.send( jokes );
-}); // end testGet
+}); // end getJoke

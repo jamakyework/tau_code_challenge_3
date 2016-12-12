@@ -5,12 +5,12 @@ $( document ).ready( function(){
   //start addJokeButton on click
   $( '#addJokeButton' ).on( 'click', function(){
     console.log( 'addJokeButton on click');
-    postData();
+    postJoke();
     // getData();
   }); // end addJokeButton on click
 
   // start postData
-  var postData = function(){
+  var postJoke = function(){
     console.log( 'in postData?' );
 
     // assemble object to send
@@ -21,6 +21,7 @@ $( document ).ready( function(){
         punchLine: $("#punchlineIn").val()
       };
    // end object to send
+
    console.log("in newJoke:", newJoke);
 
     $.ajax({
@@ -28,12 +29,17 @@ $( document ).ready( function(){
       url: '/postJoke',
       data: newJoke,
       success: function( response ){
-        console.log( 'back from post call:', response );
-      // displayOnDom(response);
-      },
+        console.log( 'back from post call1:', response );
+        console.log( 'back from post call2:', response[0]);
+        console.log( 'back from post call3:', response[0].whoseJoke, response[0].jokeQuestion, response[0].punchLine);
+        for( var i = 0 ; i < response.length; i++ ){
+          $("#outputDiv").empty();
+          $("#outputDiv").html(response[i].whoseJoke + " " + response[i].jokeQuestion + " "+ response[i].punchLine );
+      }
+      },// end success
       error: function(){
         console.log( 'error with ajax call...');
-      }
+      }//end error
     });
   }; // end postData
 
@@ -53,6 +59,21 @@ $( document ).ready( function(){
 //     });
 //   }; // end getJoke
 
-
-
 }); // end doc ready
+
+
+
+// //start display
+// var displayOnDOM = function(response){
+//   $("#outputDiv").empty();
+//   for( var i = 0 ; i < response.length; i++ ){
+//     $( "#outputDiv").html( "<p><b>" + response[ i ].whoseJoke + "</b> (" + response[ i ].jokeQuestion + ") </b> (" + response[ i ].jokeQuestion + ")</p>");
+// }
+// };
+// //end display
+
+// var displayOnDom = function(potato){
+//   $("#outputDiv").empty();
+//     console.log("In displayOnDom:", potato);
+//     $( "#outputDiv").html("<p>" + potato + "</p>");
+// };
