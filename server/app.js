@@ -41,4 +41,5 @@ app.get( '/', function( req, res ){
   res.sendFile( path.resolve( 'views/index.html' ) );
 }); // end base url
 
+
 app.use( express.static( 'public' ) );

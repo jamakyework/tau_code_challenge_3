@@ -32,3 +32,11 @@ Overview
 * the user should be able to add jokes using the input form
 
 Remember to work in small increments and test often. If you want to take things further, first push the working basic mode to your github and update it after.
+
+
+Tasks
+=====
+
+[] Send requests to the server from both the browser and using ajax in the client side script.
+[] Display response on the DOM.
+[] Demonstrate the separation of logic between the client and the server.
