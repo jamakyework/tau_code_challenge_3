@@ -6,7 +6,7 @@ $( document ).ready( function(){
   $( '#addJokeButton' ).on( 'click', function(){
     console.log( 'addJokeButton on click');
     postJoke();
-    // getData();
+    // getJoke();
   }); // end addJokeButton on click
 
   // start postData
@@ -43,21 +43,21 @@ $( document ).ready( function(){
     });
   }; // end postData
 
-//   // start getJoke
-//   var getJoke = function(){
-//     console.log( 'in getJoke' );
-//     $.ajax({
-//       type: 'GET',
-//       url: '/getJoke',
-//       success: function( response ){
-//         console.log( 'back from get call:', response);
-// // need object from server side
-//     },
-//       error: function(){
-//         console.log( 'error with ajax call...');
-//       }
-//     });
-//   }; // end getJoke
+  // start getJoke
+  var getJoke = function(){
+    console.log( 'in getJoke' );
+    $.ajax({
+      type: 'GET',
+      url: '/getJoke',
+      success: function( response ){
+        console.log( 'back from get call:', response);
+// need object from server side
+    },
+      error: function(){
+        console.log( 'error with ajax call...');
+      }
+    });
+  }; // end getJoke
 
 }); // end doc ready
 
